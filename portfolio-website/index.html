@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio — Sanjay Wanekar</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f6f8;
+  --surface: #ffffff;
+  --border: #e2e5ea;
+  --accent: #2563eb;
+  --accent2: #0ea5e9;
+  --accent3: #6366f1;
+  --text: #111827;
+  --muted: #6b7280;
+  --card: #ffffff;
+  --tag-bg: #eff6ff;
+  --tag-text: #1d4ed8;
+  --hero-bg: #ffffff;
+  --nav-bg: rgba(255,255,255,0.92);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Subtle dot pattern background */
+body::before {
+  content:'';
+  position:fixed; inset:0;
+  background-image: radial-gradient(circle, #cbd5e1 1px, transparent 1px);
+  background-size: 28px 28px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+}
+
+/* Soft colour blobs */
+.orb {
+  position:fixed; border-radius:50%;
+  filter: blur(120px); pointer-events:none; z-index:0; opacity:0.18;
+}
+.orb1 { width:700px;height:700px;background:#93c5fd;top:-200px;right:-150px; }
+.orb2 { width:600px;height:600px;background:#a5f3fc;bottom:-200px;left:-100px; }
+
+/* Nav */
+nav {
+  position:fixed; top:0; width:100%; z-index:100;
+  padding:1rem 2.5rem;
+  display:flex; align-items:center; justify-content:space-between;
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 1px 12px rgba(0,0,0,0.06);
+}
+.logo { font-family:'Syne',sans-serif; font-size:1.25rem; font-weight:800; letter-spacing:-0.02em; color:var(--text); }
+.logo span { color:var(--accent); }
+nav ul { display:flex; gap:2rem; list-style:none; }
+nav a { color:var(--muted); text-decoration:none; font-size:0.9rem; font-weight:500;
+        transition:color 0.2s; }
+nav a:hover { color:var(--text); }
+.nav-cta {
+  background: var(--accent); color:#fff; padding:0.5rem 1.2rem;
+  border-radius:100px; font-size:0.85rem; font-weight:600;
+  text-decoration:none; transition: all 0.2s;
+  box-shadow: 0 4px 14px rgba(37,99,235,0.3);
+}
+.nav-cta:hover { background:#1d4ed8; color:#fff; transform:translateY(-1px); }
+
+/* Hero */
+.hero {
+  position:relative; z-index:1;
+  min-height:100vh; display:flex; align-items:center;
+  padding: 8rem 5% 4rem;
+  max-width:1300px; margin:0 auto;
+  gap: 4rem;
+}
+.hero-left { flex:1; }
+.hero-badge {
+  display:inline-flex; align-items:center; gap:0.5rem;
+  background:#dcfce7; border:1px solid #86efac;
+  color:#15803d; padding:0.4rem 1rem;
+  border-radius:100px; font-size:0.8rem; font-weight:600;
+  margin-bottom:1.5rem;
+}
+.hero-badge::before {
+  content:''; width:6px; height:6px; border-radius:50%;
+  background:#22c55e; display:block;
+  animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-dot {
+  0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)}
+}
+h1 {
+  font-family:'Syne',sans-serif; font-size:clamp(3rem,6vw,5.5rem);
+  font-weight:800; line-height:1.0; letter-spacing:-0.04em;
+  margin-bottom:1.5rem; color:var(--text);
+}
+h1 .gradient {
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+  background-clip:text;
+}
+.hero-bio {
+  font-size:1.1rem; line-height:1.75; color:var(--muted);
+  max-width:520px; margin-bottom:2.5rem;
+}
+.hero-actions { display:flex; gap:1rem; flex-wrap:wrap; }
+.btn-primary {
+  background: var(--accent);
+  color:#fff; padding:0.85rem 2rem; border-radius:100px;
+  font-weight:600; text-decoration:none; border:none; cursor:pointer;
+  font-size:0.95rem; transition:all 0.2s;
+  box-shadow: 0 6px 20px rgba(37,99,235,0.35);
+}
+.btn-primary:hover { background:#1d4ed8; transform:translateY(-2px); box-shadow:0 10px 28px rgba(37,99,235,0.45); }
+.btn-secondary {
+  background:#fff; color:var(--text);
+  padding:0.85rem 2rem; border-radius:100px; font-weight:500;
+  text-decoration:none; border:1.5px solid var(--border); cursor:pointer;
+  font-size:0.95rem; transition:all 0.2s;
+}
+.btn-secondary:hover { border-color:var(--accent); color:var(--accent); }
+
+/* Stats in hero */
+.hero-stats {
+  display:flex; gap:3rem; margin-top:3.5rem;
+  padding-top:2.5rem; border-top:1.5px solid var(--border);
+}
+.stat-val {
+  font-family:'Syne',sans-serif; font-size:2.5rem;
+  font-weight:800; color:var(--text);
+}
+.stat-val span { color:var(--accent); }
+.stat-label { font-size:0.8rem; color:var(--muted); margin-top:0.2rem; font-weight:500; }
+
+/* Hero card */
+.hero-card {
+  width:360px; flex-shrink:0;
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:24px; padding:2rem;
+  position:relative; overflow:hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.07);
+}
+.hero-card::before {
+  content:''; position:absolute; inset:0;
+  background:linear-gradient(135deg, rgba(37,99,235,0.03), rgba(14,165,233,0.02));
+}
+/* Coloured top stripe on card */
+.hero-card::after {
+  content:''; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg, var(--accent), var(--accent2), var(--accent3));
+}
+.avatar-ring {
+  width:100px; height:100px; border-radius:50%;
+  background:linear-gradient(135deg, var(--accent), var(--accent2));
+  padding:3px; margin:0 auto 1.5rem;
+}
+.avatar-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;   /* IMPORTANT */
+}
+.avatar-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-name { font-family:'Syne',sans-serif; font-size:1.2rem; font-weight:700;
+                text-align:center; margin-bottom:0.3rem; color:var(--text); }
+.profile-title { font-size:0.85rem; color:var(--muted); text-align:center; margin-bottom:1.5rem; }
+.skill-bars { display:flex; flex-direction:column; gap:0.85rem; }
+.skill-row { display:flex; flex-direction:column; gap:0.35rem; }
+.skill-header { display:flex; justify-content:space-between; font-size:0.8rem; }
+.skill-name { color:var(--text); font-weight:500; }
+.skill-pct { color:var(--muted); }
+.skill-track { height:5px; background:#f1f5f9; border-radius:3px; overflow:hidden; }
+.skill-fill {
+  height:100%; border-radius:3px;
+  background:linear-gradient(90deg, var(--accent), var(--accent2));
+  transform:scaleX(0); transform-origin:left;
+  animation: fill-bar 1.5s ease forwards;
+}
+@keyframes fill-bar { to { transform:scaleX(1); } }
+
+/* Sections */
+section { position:relative; z-index:1; padding:6rem 5%; max-width:1300px; margin:0 auto; }
+.section-header { margin-bottom:3.5rem; }
+.section-tag {
+  display:inline-block;
+  font-size:0.72rem; font-weight:700; letter-spacing:0.12em;
+  text-transform:uppercase; color:var(--accent);
+  background:var(--tag-bg); padding:0.3rem 0.85rem;
+  border-radius:100px; margin-bottom:0.85rem;
+  border:1px solid #bfdbfe;
+}
+h2 {
+  font-family:'Syne',sans-serif; font-size:clamp(2rem,4vw,3.2rem);
+  font-weight:800; letter-spacing:-0.03em; color:var(--text);
+}
+h2 em { font-style:normal; color:#9ca3af; }
+
+/* Projects grid */
+.projects-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.5rem; }
+.project-card {
+  background:#fff; border:1.5px solid var(--border);
+  border-radius:20px; overflow:hidden;
+  transition:transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+.project-card:hover { transform:translateY(-6px); box-shadow:0 16px 40px rgba(37,99,235,0.12); border-color:#bfdbfe; }
+.project-thumb {
+  height:180px;
+  background:linear-gradient(135deg, #eff6ff, #e0f2fe);
+  display:flex; align-items:center; justify-content:center;
+  font-size:3.5rem;
+  border-bottom:1px solid var(--border);
+}
+.project-body { padding:1.5rem; }
+.project-title { font-family:'Syne',sans-serif; font-size:1.1rem; font-weight:700; margin-bottom:0.5rem; color:var(--text); }
+.project-desc { font-size:0.875rem; color:var(--muted); line-height:1.6; margin-bottom:1.25rem; }
+.project-tags { display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:1.25rem; }
+.tag {
+  background:var(--tag-bg); color:var(--tag-text);
+  padding:0.25rem 0.7rem; border-radius:100px;
+  font-size:0.72rem; font-weight:600;
+  border:1px solid #bfdbfe;
+}
+.project-links { display:flex; gap:0.75rem; }
+.project-link {
+  font-size:0.8rem; color:var(--muted); text-decoration:none;
+  display:flex; align-items:center; gap:0.35rem;
+  transition:color 0.2s; font-weight:500;
+}
+.project-link:hover { color:var(--accent); }
+
+/* Skills section */
+.skills-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:1rem; }
+.skill-card {
+  background:#fff; border:1.5px solid var(--border);
+  border-radius:16px; padding:1.25rem 1.5rem;
+  transition:all 0.2s;
+  box-shadow:0 2px 8px rgba(0,0,0,0.04);
+}
+.skill-card:hover { border-color:#bfdbfe; box-shadow:0 6px 20px rgba(37,99,235,0.1); transform:translateY(-2px); }
+.skill-card-name { font-weight:600; margin-bottom:0.75rem; font-size:0.95rem; color:var(--text); }
+.skill-card-bar { height:5px; background:#f1f5f9; border-radius:3px; overflow:hidden; }
+.skill-card-fill {
+  height:100%; border-radius:3px;
+  background:linear-gradient(90deg, var(--accent), var(--accent2));
+}
+.skill-card-pct { font-size:0.75rem; color:var(--muted); margin-top:0.4rem; font-weight:500; }
+
+/* Experience */
+.timeline { display:flex; flex-direction:column; }
+.timeline-item {
+  display:flex; gap:2rem;
+  padding:2rem 0; border-bottom:1.5px solid var(--border);
+}
+.timeline-item:last-child { border-bottom:none; }
+.timeline-dot {
+  flex-shrink:0; width:14px; height:14px; border-radius:50%;
+  background:var(--accent); margin-top:0.4rem;
+  box-shadow:0 0 0 4px #dbeafe;
+}
+.timeline-content { flex:1; }
+.timeline-role { font-family:'Syne',sans-serif; font-size:1.05rem; font-weight:700; margin-bottom:0.2rem; color:var(--text); }
+.timeline-company { color:var(--accent); font-size:0.9rem; font-weight:600; margin-bottom:0.2rem; }
+.timeline-duration { font-size:0.8rem; color:var(--muted); margin-bottom:0.75rem; font-weight:500; }
+.timeline-desc { font-size:0.9rem; color:var(--muted); line-height:1.65; }
+
+/* Contact */
+.contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; }
+.contact-info { display:flex; flex-direction:column; gap:2rem; }
+.contact-info h3 { font-family:'Syne',sans-serif; font-size:1.5rem; font-weight:700; color:var(--text); }
+.contact-info p { color:var(--muted); line-height:1.7; }
+.contact-form { display:flex; flex-direction:column; gap:1rem; }
+.form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+.form-field { display:flex; flex-direction:column; gap:0.5rem; }
+.form-field label { font-size:0.8rem; font-weight:600; color:#374151; }
+.form-field input, .form-field textarea {
+  background:#fff; border:1.5px solid var(--border);
+  border-radius:12px; padding:0.75rem 1rem;
+  color:var(--text); font-family:'DM Sans',sans-serif;
+  font-size:0.9rem; transition:border-color 0.2s, box-shadow 0.2s; outline:none;
+}
+.form-field input:focus, .form-field textarea:focus {
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(37,99,235,0.1);
+}
+.form-field textarea { resize:vertical; min-height:120px; }
+
+/* Toast */
+.toast {
+  position:fixed; bottom:2rem; right:2rem; z-index:999;
+  background:#1e293b; color:#f8fafc;
+  padding:1rem 1.5rem; border-radius:12px; font-size:0.9rem;
+  box-shadow:0 8px 24px rgba(0,0,0,0.18);
+  transform:translateY(100px); opacity:0;
+  transition:all 0.4s ease;
+}
+.toast.show { transform:translateY(0); opacity:1; }
+
+/* Footer */
+footer {
+  position:relative; z-index:1;
+  text-align:center; padding:2rem;
+  border-top:1.5px solid var(--border);
+  color:var(--muted); font-size:0.85rem;
+  background:#fff;
+}
+
+/* Loading skeleton */
+.skeleton {
+  background:linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background-size:200% 100%;
+  animation:shimmer 1.5s infinite;
+  border-radius:8px;
+}
+@keyframes shimmer { 0%{background-position:200%} 100%{background-position:-200%} }
+
+@media(max-width:900px) {
+  .hero { flex-direction:column; }
+  .hero-card { width:100%; }
+  .contact-grid { grid-template-columns:1fr; }
+  .form-row { grid-template-columns:1fr; }
+}
+</style>
+</head>
+<body>
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<nav>
+  <div class="logo">sanjay<span>.</span>dev</div>
+  <ul>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Hire Me</a>
+</nav>
+
+<!-- HERO -->
+<div style="max-width:1300px;margin:0 auto;position:relative;z-index:1;">
+  <div class="hero">
+    <div class="hero-left">
+      <div class="hero-badge" id="badge-text">Available for work</div>
+      <h1 id="hero-name">Sanjay<br>Full-Stack<br><span class="gradient">Developer</span></h1>
+      <p class="hero-bio" id="hero-bio">Loading profile...</p>
+      <div class="hero-actions">
+        <a href="#projects" class="btn-primary">View My Work</a>
+        <a href="#contact" class="btn-secondary">Get in Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div>
+          <div class="stat-val" id="stat-projects">—<span>+</span></div>
+          <div class="stat-label">Projects Shipped</div>
+        </div>
+        <div>
+          <div class="stat-val" id="stat-skills">—<span>+</span></div>
+          <div class="stat-label">Technologies</div>
+        </div>
+        <div>
+          <div class="stat-val" id="stat-years">—<span>+</span></div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="avatar-ring">
+        <div class="avatar-inner">
+  <img src="assets/WhatsApp Image 2026-03-30 at 7.34.49 PM.jpeg" alt="Profile" style="width:100%;height:100%;border-radius:50%;object-fit:cover;">
+</div>
+      </div>
+      <div class="profile-name" id="card-name">Sanjay Wanekar</div>
+      <div class="profile-title" id="card-title">Developer & Video Editor</div>
+      <div class="skill-bars" id="hero-skills-bars"></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header">
+    <div class="section-tag">Portfolio</div>
+    <h2>Featured <em>Projects</em></h2>
+  </div>
+  <div class="projects-grid" id="projects-grid">
+    <div class="skeleton" style="height:360px;border-radius:20px;"></div>
+    <div class="skeleton" style="height:360px;border-radius:20px;"></div>
+    <div class="skeleton" style="height:360px;border-radius:20px;"></div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header">
+    <div class="section-tag">Expertise</div>
+    <h2>Technical <em>Skills</em></h2>
+  </div>
+  <div class="skills-grid" id="skills-grid">
+    <div class="skeleton" style="height:90px;border-radius:16px;"></div>
+    <div class="skeleton" style="height:90px;border-radius:16px;"></div>
+    <div class="skeleton" style="height:90px;border-radius:16px;"></div>
+    <div class="skeleton" style="height:90px;border-radius:16px;"></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <div class="section-tag">Career</div>
+    <h2>Work <em>Experience</em></h2>
+  </div>
+  <div class="timeline" id="timeline"></div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header">
+    <div class="section-tag">Get in Touch</div>
+    <h2>Let's <em>Work Together</em></h2>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div>
+        <h3>Got a project in mind?</h3>
+        <p style="margin-top:1rem;">I'm always open to discussing new opportunities, interesting projects, or just grabbing a virtual coffee. Drop me a message!</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:1rem;">
+        <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--card);border:1px solid var(--border);border-radius:12px;">
+          <span style="font-size:1.5rem;">📧</span>
+          <div>
+            <div style="font-size:0.75rem;color:var(--muted);">Email</div>
+            <div id="contact-email" style="font-size:0.9rem;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="85e4e9e0fdc5e0fde4e8f5e9e0abe6eae8">[email&#160;protected]</a></div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--card);border:1px solid var(--border);border-radius:12px;">
+          <span style="font-size:1.5rem;">🐙</span>
+          <div>
+            <div style="font-size:0.75rem;color:var(--muted);">GitHub</div>
+            <div id="contact-github" style="font-size:0.9rem;">github.com/sanjaywanekar</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem;padding:1rem;background:var(--card);border:1px solid var(--border);border-radius:12px;">
+          <span style="font-size:1.5rem;">💼</span>
+          <div>
+            <div style="font-size:0.75rem;color:var(--muted);">LinkedIn</div>
+            <div id="contact-linkedin" style="font-size:0.9rem;">linkedin.com/in/sanjaywanekar</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="submitContact(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Your Name</label>
+          <input type="text" id="c-name" placeholder="John Doe" required>
+        </div>
+        <div class="form-field">
+          <label>Email Address</label>
+          <input type="email" id="c-email" placeholder="john@example.com" required>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Subject</label>
+        <input type="text" id="c-subject" placeholder="Let's build something amazing" required>
+      </div>
+      <div class="form-field">
+        <label>Message</label>
+        <textarea id="c-message" placeholder="Tell me about your project..." required></textarea>
+      </div>
+      <button type="submit" class="btn-primary" style="align-self:flex-start;">Send Message →</button>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p>Built with FastAPI + Vanilla JS · <span id="footer-name">Sanjay Wanekar</span> © 2025</p>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const EMOJIS = ['🚀','🤖','💡','🎯','⚡','🔥','🧩','🛠️'];
+
+function showToast(msg, ok=true) {
+  const t = document.getElementById('toast');
+  t.textContent = (ok ? '✅ ' : '❌ ') + msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'), 3500);
+}
+async function loadSkillsSection() {
+  try {
+    const res = await fetch('http://127.0.0.1:8001/api/skills');
+    const skills = await res.json();
+
+    const grid = document.getElementById('skills-grid');
+
+    grid.innerHTML = skills.map(s => `
+      <div class="skill-card">
+        <div class="skill-card-name">${s.name} (${s.category})</div>
+        <div class="skill-card-bar">
+          <div class="skill-card-fill" style="width:${s.level}%"></div>
+        </div>
+        <div class="skill-card-pct">${s.level}%</div>
+      </div>
+    `).join('');
+  } catch (e) {
+    console.error(e);
+  }
+}
+async function loadProfile() {
+  try {
+    const [profile, stats] = await Promise.all([
+      fetch(API+'/profile').then(r=>r.json()),
+      fetch(API+'/stats').then(r=>r.json())
+    ]);
+    document.getElementById('hero-name').innerHTML =
+      `${profile.name.split(' ')[0]}<br>Full-Stack<br><span class="gradient">Developer</span>`;
+    document.getElementById('hero-bio').textContent = profile.bio;
+    document.getElementById('card-name').textContent = profile.name;
+    document.getElementById('card-title').textContent = profile.title;
+    document.getElementById('contact-email').textContent = profile.email;
+    document.getElementById('contact-github').textContent = profile.github;
+    document.getElementById('contact-linkedin').textContent = profile.linkedin;
+    document.getElementById('footer-name').textContent = profile.name;
+    document.getElementById('stat-projects').innerHTML = `${stats.projects}<span>+</span>`;
+    document.getElementById('stat-skills').innerHTML = `${stats.skills}<span>+</span>`;
+    document.getElementById('stat-years').innerHTML = `${stats.years_exp}<span>+</span>`;
+    document.title = `Portfolio — ${profile.name}`;
+  } catch(e) { console.error(e); }
+}
+
+async function loadSkillsCard() {
+  try {
+    const skills = await fetch(API+'/skills').then(r=>r.json());
+    const top5 = skills.slice(0,5);
+    document.getElementById('hero-skills-bars').innerHTML = top5.map((s,i) => `
+      <div class="skill-row">
+        <div class="skill-header">
+          <span class="skill-name">${s.name}</span>
+          <span class="skill-pct">${s.level}%</span>
+        </div>
+        <div class="skill-track">
+          <div class="skill-fill" style="width:${s.level}%;animation-delay:${i*0.15}s"></div>
+        </div>
+      </div>`).join('');
+  } catch(e) {}
+}
+
+async function loadProjects() {
+  try {
+    const projects = await fetch(API+'/projects').then(r=>r.json());
+    const grid = document.getElementById('projects-grid');
+    grid.innerHTML = projects.map((p,i) => `
+      <div class="project-card">
+        <div class="project-thumb">${EMOJIS[i%EMOJIS.length]}</div>
+        <div class="project-body">
+          <div class="project-title">${p.title}${p.featured?'<span style="margin-left:.5rem;font-size:.7rem;background:rgba(124,106,247,.2);color:#a89ef5;padding:.15rem .5rem;border-radius:100px;">Featured</span>':''}</div>
+          <div class="project-desc">${p.description||'No description.'}</div>
+          <div class="project-tags">${(p.tech_stack||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+          <div class="project-links">
+            ${p.github_url?`<a href="${p.github_url}" class="project-link">🔗 GitHub</a>`:''}
+            ${p.live_url?`<a href="${p.live_url}" class="project-link">🌐 Live Demo</a>`:''}
+          </div>
+        </div>
+      </div>`).join('');
+  } catch(e) { document.getElementById('projects-grid').innerHTML = '<p style="color:var(--muted)">Could not load projects. Make sure backend is running.</p>'; }
+}
+
+async function loadSkillsSection() {
+  try {
+    const res = await fetch(API + '/skills');
+    const skills = await res.json();
+
+    const grid = document.getElementById('skills-grid');
+
+    grid.innerHTML = skills.map(s => `
+      <div class="skill-card">
+        <div class="skill-card-name">
+          ${s.name} 
+          <span style="font-size:.75rem;color:var(--muted);font-weight:400;">
+            (${s.category})
+          </span>
+        </div>
+        <div class="skill-card-bar">
+          <div class="skill-card-fill" style="width:${s.level}%"></div>
+        </div>
+        <div class="skill-card-pct">${s.level}% proficiency</div>
+      </div>
+    `).join('');
+
+  } catch (e) {
+    console.error("ERROR:", e);
+  }
+}
+
+async function loadExperience() {
+  try {
+    const exp = await fetch(API+'/experience').then(r=>r.json());
+    document.getElementById('timeline').innerHTML = exp.map(e => `
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <div class="timeline-role">${e.role}</div>
+          <div class="timeline-company">${e.company}</div>
+          <div class="timeline-duration">${e.duration}</div>
+          <div class="timeline-desc">${e.description}</div>
+        </div>
+      </div>`).join('');
+  } catch(e) {}
+}
+
+async function submitContact(e) {
+  e.preventDefault();
+  const data = {
+    name: document.getElementById('c-name').value,
+    email: document.getElementById('c-email').value,
+    subject: document.getElementById('c-subject').value,
+    message: document.getElementById('c-message').value
+  };
+  try {
+    const r = await fetch(API+'/contact', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify(data)
+    });
+    const res = await r.json();
+    showToast(res.message);
+    e.target.reset();
+  } catch(err) {
+    showToast('Failed to send. Check backend.', false);
+  }
+}
+
+// Init
+const API = 'http://127.0.0.1:8001/api';
+
+
+  // Init
+  loadProfile();
+  loadSkillsCard();
+  loadProjects();
+  loadSkillsSection();
+  loadExperience();
+</script>
+
+</body>
+</html>
