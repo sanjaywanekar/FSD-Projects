@@ -31,7 +31,7 @@ pip install flask flask-sqlalchemy
 Installation & Setup
 Clone the repository:
 
-git clone [https://github.com/YOUR_USERNAME/02_Personal_blog.git](https://github.com/YOUR_USERNAME/02_Personal_blog.git)
+git clone [https://github.com/YOUR_USERNAME/02_Personal_blog.git](https://github.com/sanjaywanekar/FSD-Projects/tree/main/02_Personal_blog)
 cd 02_Personal_blog
 Initialize the Database:
 The script is designed to automatically create the blog.db and populate it with seed data (regarding MIT CSN, Cricket, and Future Tech) on the first run.
@@ -43,15 +43,19 @@ Access the Site:
 Open your browser and navigate to http://127.0.0.1:5000
 
 📂 Project Structure
+
 02_Personal_blog/
-├── app.py              # Main Flask application & Backend logic
-├── blog.db             # SQLite Database (Auto-generated)
+│
+├── app.py
+├── instance/
+│ └── blog.db
 ├── static/
-│   ├── style.css       # Custom aesthetic styling
-│   └── sanjay.jpg.jpeg # Profile imagery
-└── templates/          # Jinja2 HTML Templates
-    ├── index.html      # Homepage with Slider, About, and Contact
-    ├── all_blogs.html  # Full blog archive
-    ├── post.html       # Individual post view
-    ├── admin.html      # Content management portal
-    └── about.html      # Detailed biography
+│ ├── style.css
+│ └── sanjay.jpg
+├── templates/
+│ ├── index.html
+│ ├── about.html
+│ ├── contact.html
+│ ├── admin.html
+│ ├── all_blogs.html
+│ └── post.html
