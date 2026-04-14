@@ -1,3 +1,6 @@
+## 🌍 Live Website
+👉 https://personal-blog-natu.onrender.com
+
 # Personal Blog Platform - "The Archive" 🚀
 
 A high-performance, aesthetically driven personal blog platform . This project was developed as part of my portfolio at **MIT CSN**.
