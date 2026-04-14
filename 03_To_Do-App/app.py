@@ -81,6 +81,10 @@ def delete_task(id):
     conn.close()
     return jsonify({"message": "Deleted"})
 
+@app.route('/')
+def home():
+    return "Taskr Backend is Live 🚀"
+
 if __name__ == '__main__':
     import os
     port = int(os.environ.get("PORT", 5000))

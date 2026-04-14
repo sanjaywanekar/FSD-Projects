@@ -571,7 +571,7 @@ function getDefaultTasks() {
 }
 
 async function loadTasks() {
-  const res = await fetch('http://127.0.0.1:5000/tasks');
+  const res = await fetch('http://127.0.https://tasks-to-do-app.onrender.com/tasks0.1:5000/tasks');
   tasks = await res.json();
   renderAll();
 }
@@ -861,7 +861,7 @@ function saveTask() {
   }
 
 // ✅ send to backend
-fetch('http://127.0.0.1:5000/tasks', {
+fetch('https://tasks-to-do-app.onrender.com/tasks', {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify(task)
