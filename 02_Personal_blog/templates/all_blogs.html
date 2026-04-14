@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Archive | Sanjay Wanekar</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        .archive-header { padding: 100px 0 50px 0; border-bottom: 1px solid #333; }
+        .blog-row { 
+            display: grid; grid-template-columns: 150px 1fr; 
+            padding: 40px 0; border-bottom: 1px solid #222; 
+            transition: 0.3s;
+        }
+        .blog-row:hover { background: #1e2124; padding-left: 20px; }
+        .blog-date { color: #666; font-family: monospace; font-size: 0.9rem; }
+        .blog-title { font-size: 1.8rem; font-weight: 700; color: #fff; text-decoration: none; }
+        .blog-title:hover { color: var(--accent); }
+        .tag { color: var(--accent); font-size: 0.7rem; font-weight: bold; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">SANJAY WANEKAR</div>
+            <nav>
+                <a href="/">HOME</a>
+                <a href="/blogs" style="color:var(--accent)">BLOGS</a>
+                <a href="/#about">ABOUT</a>
+                <a href="/#contact">CONTACT</a>
+            </nav>
+        </header>
+
+        <section class="archive-header">
+            <h1 style="font-size: 4rem; letter-spacing: -2px;">Writing & <br><span style="color:var(--accent)">Experiments.</span></h1>
+            <p style="color: #888; max-width: 500px;">A collection of thoughts on B.Tech life at MIT CSN, cricket analytics, and the future of software design.</p>
+        </section>
+
+        <main style="margin-bottom: 100px;">
+            {% for post in posts %}
+            <div class="blog-row">
+                <div class="blog-date">{{ post.date_posted.strftime('%b %d, %y') }}</div>
+                <div>
+                    <div class="tag">{{ post.category }}</div>
+                    <a href="{{ url_for('view_post', post_id=post.id) }}" class="blog-title">{{ post.title }}</a>
+                    <p style="color: #bbb; margin-top: 5px;">{{ post.subtitle }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </main>
+    </div>
+</body>
+</html>

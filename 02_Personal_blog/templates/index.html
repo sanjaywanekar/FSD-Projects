@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sanjay Wanekar | CS & Design @ MIT CSN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">SANJAY WANEKAR</div>
+            <nav>
+                <a href="#about">ABOUT ME</a>
+                <a href="/">BLOGS</a>
+                <a href="#contact">CONTACT ME</a>
+                <a href="/admin" style="color:var(--accent)">+ ADMIN</a>
+            </nav>
+        </header>
+    </div>
+
+    <section class="hero-slider">
+        {% for post in featured %}
+        <div class="slide {% if loop.first %}active{% endif %}" 
+             style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?w=1600&q=80');">
+            <div class="slide-overlay"></div>
+            <div class="slide-content">
+                <h1><a href="{{ url_for('view_post', post_id=post.id) }}">{{ post.title }}</a></h1>
+                <p>{{ post.subtitle }}</p>
+                <a href="{{ url_for('view_post', post_id=post.id) }}" class="btn">Read Full Article</a>
+            </div>
+        </div>
+        {% endfor %}
+    </section>
+
+    <section class="container" id="about">
+        <div class="section-grid">
+           <div>
+    <img src="{{ url_for('static', filename='sanjay.jpg.jpeg') }}" class="sanjay-image" alt="Sanjay Wanekar">
+            </div>
+            <div>
+                <div class="post-meta" style="color:var(--accent)">MIT CSN | COMPUTER SCIENCE & DESIGN</div>
+                <h2 class="section-title">About Sanjay</h2>
+                <p style="color:#bbb; font-size:1.1rem; max-width:500px">I am Sanjay Wanekar, a final year B.Tech student in CS&D at <span style="color:#fff">MIT CSN</span>. My interests lie in robust backend development (Python/ERP), elegant UI (Flutter), and technical precision (Badminton/Cricket).</p>
+                <p>This platform serves as a central repository for my thoughts, technical experiments, and project breakdowns.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="container" id="contact">
+        <div class="section-grid" style="border-bottom:none">
+            <div>
+                <h2 class="section-title">Get In Touch</h2>
+                <p style="color:#bbb">Interested in collaborating on a full-stack ERP or discussing the convergence of design and CS? Drop me a message.</p>
+            </div>
+            <div class="form-card">
+                <form>
+                    <input type="text" placeholder="Your Name" required>
+                    <input type="email" placeholder="Your Email" required>
+                    <textarea placeholder="Your Message" rows="5" required></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 SANJAY WANEKAR | MIT CSN B.Tech. <a href="/" style="color:#666; margin-left:10px;">Home</a></p>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Change slide every 5 seconds (5000ms)
+        if(slides.length > 1) {
+            setInterval(nextSlide, 5000);
+        }
+    </script>
+</body>
+</html>
