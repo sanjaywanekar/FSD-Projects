@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIT CSN Events 2026 | FYP Portal</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #000; color: white; scroll-behavior: smooth; }
+        
+        /* Updated Color Palette based on MIT CSN Logo */
+        .hero-gradient { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&q=80&w=1600'); background-size: cover; background-position: center; }
+        
+        /* Accent Colors matching image_9.png */
+        .text-logo-blue { color: #0a2540; }
+        .text-logo-orange { color: #f9a03f; }
+        .bg-logo-orange { background-color: #f9a03f; }
+        
+        /* Glassmorphism Styling */
+        .glass { background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        input:focus { outline: none; border-color: #f9a03f; box-shadow: 0 0 10px rgba(249, 160, 63, 0.4); }
+    </style>
+</head>
+<body>
+
+    <nav class="fixed w-full z-50 glass py-4 px-10 flex justify-between items-center">
+        <div class="text-2xl font-black tracking-tighter text-logo-blue">MIT <span class="text-logo-orange">CSN</span></div>
+        <div class="hidden md:flex space-x-8 font-bold text-xs uppercase tracking-widest text-white/90">
+            <a href="#home" class="hover:text-logo-orange transition">Home</a>
+            <a href="#events" class="hover:text-logo-orange transition">Events</a>
+            <a href="#venue" class="hover:text-logo-orange transition">Venue</a>
+            <a href="#register" class="bg-logo-orange text-black px-6 py-2 rounded-full hover:scale-105 transition font-bold">Register Now</a>
+        </div>
+    </nav>
+
+    <header id="home" class="h-screen hero-gradient flex flex-col justify-center items-center text-center px-4">
+        <h1 class="text-6xl md:text-8xl font-black mb-4 tracking-tight leading-tight">MIT CSN <br><span class="text-logo-orange">2026 SEASON</span></h1>
+        <p class="text-xl md:text-2xl max-w-2xl text-zinc-300 mb-8 font-light">Join the elite gathering of innovation and culture. Entries are now open for the grandest stage of the year.</p>
+        <div class="flex gap-4">
+            <a href="#events" class="border-2 border-white px-8 py-3 rounded-full font-bold hover:bg-white hover:text-black transition">Explore Events</a>
+            <a href="#register" class="bg-logo-orange text-black px-8 py-3 rounded-full font-bold hover:shadow-[0_0_20px_rgba(249,160,63,0.6)] transition">Enter Now</a>
+        </div>
+    </header>
+
+    <section class="py-20 bg-white text-black flex flex-wrap justify-around items-center text-center">
+        <div><h3 class="text-5xl font-black text-logo-blue">2</h3><p class="uppercase text-xs font-bold text-zinc-500">Major Events</p></div>
+        <div><h3 class="text-5xl font-black text-logo-blue">10+</h3><p class="uppercase text-xs font-bold text-zinc-500">Categories</p></div>
+        <div><h3 class="text-5xl font-black text-logo-blue">MIT CSN</h3><p class="uppercase text-xs font-bold text-zinc-500">Official Venue</p></div>
+        <div><h3 class="text-5xl font-black text-logo-blue">2026</h3><p class="uppercase text-xs font-bold text-zinc-500">Year of Excellence</p></div>
+    </section>
+
+    <section id="events" class="py-24 px-10">
+        <h2 class="text-center text-5xl font-black mb-16 italic tracking-tighter">THE NIGHT OF THE <span class="text-logo-orange">YEAR</span></h2>
+        
+        <div class="grid md:grid-cols-2 gap-10 max-w-7xl mx-auto">
+            <div class="glass p-10 rounded-[2rem] hover:border-logo-orange transition-all group">
+                <div class="bg-purple-600/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-purple-400 text-3xl group-hover:bg-purple-600 group-hover:text-white transition">
+                    <i class="fa-solid fa-masks-theater"></i>
+                </div>
+                <h3 class="text-4xl font-black mb-4">Kalavihangam 2026</h3>
+                <p class="text-zinc-400 mb-6 font-light">A celebration of culture, art, and vibrant traditions.</p>
+                <ul class="space-y-4 border-t border-zinc-800 pt-6 text-sm">
+                    <li class="flex justify-between"><span>Traditional Day</span> <span class="text-xs italic text-zinc-600">To be declared soon</span></li>
+                    <li class="flex justify-between"><span>Bollywood Day</span> <span class="text-xs italic text-zinc-600">To be declared soon</span></li>
+                    <li class="flex justify-between"><span>DJ Night</span> <span class="text-xs italic text-zinc-600">To be declared soon</span></li>
+                </ul>
+            </div>
+
+            <div class="glass p-10 rounded-[2rem] hover:border-logo-orange transition-all group border-logo-orange/20">
+                <div class="bg-logo-orange/10 w-16 h-16 rounded-2xl flex items-center justify-center mb-6 text-logo-orange text-3xl group-hover:bg-logo-orange group-hover:text-black transition">
+                    <i class="fa-solid fa-microchip"></i>
+                </div>
+                <h3 class="text-4xl font-black mb-4">Technophilia 2026</h3>
+                <p class="text-zinc-400 mb-6 font-light">Pushing the boundaries of technology and competitive logic.</p>
+                <ul class="space-y-4 border-t border-zinc-800 pt-6 text-sm font-semibold">
+                    <li class="flex justify-between"><span>Tech Masters</span> <span class="text-logo-orange uppercase tracking-wider text-[11px]">Live Quiz</span></li>
+                    <li class="flex justify-between"><span>Turf Cricket</span> <span class="text-logo-orange uppercase tracking-wider text-[11px]">Sports-Tech</span></li>
+                    <li class="flex justify-between"><span>Coding Combat</span> <span class="text-logo-orange uppercase tracking-wider text-[11px]">Global Standards</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="venue" class="py-20 bg-zinc-950 px-10 text-center border-t border-zinc-900">
+        <div class="max-w-4xl mx-auto">
+            <i class="fa-solid fa-location-dot text-5xl text-logo-orange mb-6"></i>
+            <h2 class="text-4xl font-black mb-4 uppercase text-white">Event Venue</h2>
+            <p class="text-2xl text-zinc-300">Emerald Theater, <span class="font-black text-white">MIT CSN</span> Campus</p>
+        </div>
+    </section>
+
+    <section id="register" class="py-24 px-10 flex flex-wrap justify-around items-start gap-10">
+        <div class="glass max-w-xl p-12 rounded-[2rem]">
+            <h2 class="text-3xl font-black mb-8 underline decoration-logo-orange decoration-4 underline-offset-8">Guidelines</h2>
+            <div class="space-y-6 text-zinc-400 font-light text-sm">
+                <div class="flex gap-4"><i class="fa-solid fa-check-circle text-logo-orange mt-1"></i><p>Open for all MIT CSN students with valid ID cards.</p></div>
+                <div class="flex gap-4"><i class="fa-solid fa-check-circle text-logo-orange mt-1"></i><p>Formal attire mandatory for Kalavihangam main events.</p></div>
+                <div class="flex gap-4"><i class="fa-solid fa-check-circle text-logo-orange mt-1"></i><p>Laptops required for all Technophilia technical rounds.</p></div>
+            </div>
+        </div>
+        
+        <div class="glass w-full max-w-lg p-12 rounded-[2rem] border-logo-orange/20">
+            <h3 class="text-2xl font-black mb-8">Quick Entry</h3>
+            <form id="regForm" class="space-y-5">
+                <input type="text" id="name" placeholder="Full Name *" required class="w-full bg-zinc-950/50 border border-zinc-800 p-4 rounded-xl">
+                <input type="email" id="email" placeholder="MIT CSN Email *" required class="w-full bg-zinc-950/50 border border-zinc-800 p-4 rounded-xl">
+                <select id="eventType" class="w-full bg-zinc-950/50 border border-zinc-800 p-4 rounded-xl text-zinc-500">
+                    <option value="" disabled selected>Select Major Event *</option>
+                    <option value="Kalavihangam">Kalavihangam 2026</option>
+                    <option value="Technophilia">Technophilia 2026</option>
+                </select>
+                <button type="submit" class="w-full bg-logo-orange text-black py-4 rounded-full font-black text-lg hover:scale-[1.02] transition">SUBMIT REGISTRATION</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="py-10 border-t border-zinc-900 text-center text-zinc-600 text-sm">
+        <p>&copy; 2026 MIT CSN. All rights reserved. Relationship Intelligence by <span class="text-logo-orange">Contaxt</span>.</p>
+    </footer>
+
+    <script>
+        const form = document.getElementById('regForm');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const registrationData = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                event_type: document.getElementById('eventType').value,
+                sub_event: "General Registration (FYP simulate)" // For simulation
+            };
+
+            try {
+                // Communicates with the Flask backend API
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(registrationData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.status === "success") {
+                    alert("✅ Registration confirmed for MIT CSN 2026!");
+                    form.reset();
+                } else {
+                    alert("❌ Error: " + result.message);
+                }
+            } catch (error) {
+                console.error("Backend unreachable:", error);
+                alert("❌ Backend server is not running!");
+            }
+        });
+    </script>
+
+</body>
+</html>
