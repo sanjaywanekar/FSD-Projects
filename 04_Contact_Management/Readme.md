@@ -38,13 +38,13 @@ CONTAXT/
 ├── app.js        # Business logic and CRUD operations
 └── README.md     # Documentation (this file)
 
-🚀 Getting Started
+##  🚀 Getting Started
 To run this project locally, follow these steps:
 
 Clone the repository:
 
 Bash
-git clone [https://github.com/YOUR_USERNAME/CONTAXT.git](https://github.com/YOUR_USERNAME/CONTAXT.git)
+git clone [https://github.com/sanjaywanekar/FSD-Projects/tree/main/04_Contact_Management](https://github.com/sanjaywanekar/FSD-Projects/tree/main/04_Contact_Management)
 Navigate to the folder:
 
 Bash
@@ -52,7 +52,7 @@ cd CONTAXT
 Launch the App:
 Simply open index.html in your preferred web browser (Chrome, Firefox, or Edge).
 
-📊 Technical Implementation Details
+## 📊 Technical Implementation Details
 CRUD Logic
 The application implements Full CRUD (Create, Read, Update, Delete) functionality:
 
