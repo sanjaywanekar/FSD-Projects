@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONTAXT | Relationship Intelligence</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #09090b; color: #fafafa; }
+        .glass-card { background: rgba(24, 24, 27, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(63, 63, 70, 0.4); }
+        .accent-gradient { background: linear-gradient(135deg, #a855f7 0%, #7c3aed 100%); }
+        .custom-scrollbar::-webkit-scrollbar { width: 6px; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: #3f3f46; border-radius: 10px; }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden">
+
+    <aside class="w-72 border-r border-zinc-800 bg-[#09090b] flex flex-col p-6">
+        <div class="mb-10 px-2">
+            <h1 class="text-4xl font-black tracking-tighter text-purple-500">CONTAXT</h1>
+            <p class="text-[10px] text-zinc-500 font-bold uppercase tracking-widest mt-1">Contact Manager</p>
+        </div>
+        
+        <nav class="space-y-2 flex-1">
+            <button onclick="showSection('directory')" class="w-full flex items-center gap-3 p-3 rounded-xl hover:bg-zinc-900 transition text-zinc-400 hover:text-white">
+                <i class="fa-solid fa-address-book"></i> Directory
+            </button>
+            <button onclick="openModal()" class="w-full flex items-center gap-3 p-4 rounded-xl accent-gradient text-white font-bold shadow-lg shadow-purple-500/20 hover:scale-[1.02] transition">
+                <i class="fa-solid fa-plus"></i> New Contact
+            </button>
+        </nav>
+    </aside>
+
+    <main class="flex-1 flex flex-col overflow-hidden">
+        <header class="p-8 flex justify-between items-center">
+            <h2 id="viewTitle" class="text-3xl font-bold">Directory</h2>
+            <div class="relative w-80">
+                <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-zinc-500"></i>
+                <input type="text" id="searchBar" onkeyup="handleSearch()" placeholder="Search relationships..." 
+                       class="w-full bg-zinc-900 border border-zinc-800 rounded-2xl py-3 pl-12 pr-4 focus:border-purple-500 outline-none transition">
+            </div>
+        </header>
+
+        <section class="flex-1 px-8 pb-8 overflow-y-auto custom-scrollbar">
+            <div class="glass-card rounded-3xl overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                    <thead class="text-[10px] uppercase tracking-widest text-zinc-500 bg-zinc-900/50">
+                        <tr>
+                            <th class="p-5 font-bold">Contact Name</th>
+                            <th class="p-5 font-bold">Organization</th>
+                            <th class="p-5 font-bold">Contact Details</th>
+                            <th class="p-5 font-bold">Tags</th>
+                            <th class="p-5 font-bold text-right">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody" class="divide-y divide-zinc-800/50">
+                        </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <div id="contactModal" class="hidden fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-6">
+        <div class="glass-card w-full max-w-2xl rounded-[2rem] p-10 relative">
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-zinc-500 hover:text-white"><i class="fa-solid fa-xmark text-2xl"></i></button>
+            
+            <h3 class="text-3xl font-extrabold mb-8">Add to Contaxt</h3>
+            
+            <form id="contactForm" class="grid grid-cols-2 gap-6">
+                <div class="col-span-2">
+                    <label class="text-[10px] uppercase font-bold text-zinc-500 mb-2 block">Full Name *</label>
+                    <input type="text" id="name" required class="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-2xl focus:border-purple-500 outline-none">
+                </div>
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-zinc-500 mb-2 block">Company</label>
+                    <input type="text" id="company" class="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-2xl focus:border-purple-500 outline-none">
+                </div>
+                <div>
+                    <label class="text-[10px] uppercase font-bold text-zinc-500 mb-2 block">Email</label>
+                    <input type="email" id="email" class="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-2xl focus:border-purple-500 outline-none">
+                </div>
+                <div class="col-span-2">
+                    <label class="text-[10px] uppercase font-bold text-zinc-500 mb-2 block">Social Profile Link</label>
+                    <input type="text" id="socials" class="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-2xl focus:border-purple-500 outline-none">
+                </div>
+                <div class="col-span-2">
+                    <label class="text-[10px] uppercase font-bold text-zinc-500 mb-2 block">Tags (comma separated)</label>
+                    <input type="text" id="tags" placeholder="e.g. Developer, VIP, Lead" class="w-full bg-zinc-950 border border-zinc-800 p-4 rounded-2xl focus:border-purple-500 outline-none">
+                </div>
+                <div class="col-span-2">
+                    <button type="submit" class="w-full accent-gradient py-5 rounded-2xl font-black text-lg tracking-tight uppercase">Analyze & Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
