@@ -1,3 +1,7 @@
+## 🌍 Live Website
+👉 https://event-registration-website-gqp7.onrender.com/
+
+
 # Event Registration Website  (MIT CSN Event Portal 2026)🎓
 
 A premium, full-stack Event Registration System built for **MIT CSN**, inspired by high-end cinematic event platforms. This project serves as a central hub for the 2026 season of **Kalavihangam** and **Technophilia**, featuring a Python-driven backend and a brand-integrated frontend.
